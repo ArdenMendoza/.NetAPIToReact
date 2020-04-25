@@ -23,10 +23,13 @@ export default {
             fetchAll: () => axios.get(url),
             fetchByUserId: id => axios.get(url + id),
             create: userTask => {
-                userTask.isDone = userTask.isDone == 'true'? true : false;
+                userTask.isDone = userTask.isDone == 'true' ? true : false;
                 return axios.post(url + 'addUser', userTask)
             },
-            update: (taskId, updatedRecord) => axios.put(url + taskId, updatedRecord),
+            update: (taskId, updatedRecord) => {
+                updatedRecord.isDone = updatedRecord.isDone == 'true' ? true : false;
+                return axios.put(url + taskId, updatedRecord)
+            },
             delete: id => axios.delete(url + id)
         }
     }
