@@ -6,11 +6,11 @@ import { Button, TextField, Snackbar } from '@material-ui/core';
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
-    regFirstName: 'Arden Cristopher',
-    regLastName: 'Mendoza',
-    regEmail: 'ardencristophermendoza@gmail.com', // 'amendoza@gmail.com',
-    regPassword: 'testpass', // 'testpass'
-    regConfirmPassword: 'testpass'
+    regFirstName: '',
+    regLastName: '',
+    regEmail: '', 
+    regPassword: '', 
+    regConfirmPassword: ''
 }
 
 

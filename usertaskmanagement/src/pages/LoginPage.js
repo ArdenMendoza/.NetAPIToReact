@@ -6,8 +6,8 @@ import RegistrationPage from '../components/RegisterForm';
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
-    email: 'amendoza@gmail.com',
-    password: 'testpass'
+    email: '',
+    password: ''
 }
 
 const LoginPage = (props) => {
