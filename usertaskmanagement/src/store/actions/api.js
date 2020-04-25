@@ -19,7 +19,6 @@ export default {
             fetchAll: () => axios.get(url),
             fetchById: id => axios.get(url + id),
             login: credentials => {
-                console.log(credentials);
                 return axios.post(url + 'authenticate', credentials)
             },
             register: newRecord => {
