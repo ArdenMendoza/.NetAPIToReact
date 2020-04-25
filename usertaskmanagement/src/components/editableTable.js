@@ -5,27 +5,27 @@ import * as taskActions from '../actions/userTaskActions';
 
 
 export default function EditableTable(props) {
-  // isDone: false
-  // taskDescription: "task1"
-  // taskId: 1
-  // taskOwnerId: 1
   const [state, setState] = React.useState({
     columns: [
-      { title: 'taskId', field: 'taskId', type: 'numeric', editable: 'never', hidden: true },
-      { title: 'taskOwnerId', field: 'taskOwnerId', type: 'numeric', editable: 'never', hidden: true },
-      { title: 'taskDescription', field: 'taskDescription' },
-      { title: 'isDone', field: 'isDone', },
+      { title: 'Task Id', field: 'taskId', type: 'numeric', editable: 'never', hidden: true },
+      { title: 'Owner Id', field: 'taskOwnerId', type: 'numeric', editable: 'never', hidden: true },
+      { title: 'Description', field: 'taskDescription' },
+      { title: 'Is Done', field: 'isDone', lookup: { true: 'True', false: 'False' }, },
     ],
-    userTasks: [...props.userTasks],
+    userTasks: [],
   });
 
+  const userTasks = props.userTasks ? [...props.userTasks] : []
   React.useEffect(() => {
-    setState({ ...state, userTasks: [...props.userTasks] })
+    setState({
+      ...state,
+      userTasks: userTasks
+    })
   }, [props.userTasks])
 
   return (
     <MaterialTable
-      title="Editable Example"
+      title="Tasks"
       columns={state.columns}
       data={state.userTasks}
       editable={{
@@ -61,6 +61,7 @@ export default function EditableTable(props) {
             }, 600);
           }),
       }}
+      actions={[{position: 'toolbarOnSelect'}]}
     />
   );
 }

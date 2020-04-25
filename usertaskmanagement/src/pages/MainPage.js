@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as userActions from '../actions/userActions';
 import * as taskActions from '../actions/userTaskActions';
-import LoginForm from '../components/LoginForm';
-import UserTasksPage from '../components/UserTasksForm';
+import LoginPage from './LoginPage';
+import UserTasksPage from './UserTasksForm';
 import CustomSnackbar from '../components/notifs/Snackbar';
 
 const MainPage = (props) => {
@@ -13,7 +13,8 @@ const MainPage = (props) => {
     }, [props]); // alternative to componentDidMount
     return (
         <div className={'appRoot'}>
-            {(!props.user.userId) ? <LoginForm /> : <UserTasksPage/>}
+            
+            {(!props.user.userId) ? <LoginPage /> : <UserTasksPage/>}
             {/* <CustomSnackbar isOpen={props.snackbar.isShown} message={props.snackbar.message} /> */}
         </div>
     )

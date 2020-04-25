@@ -2,23 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as loginActions from '../actions/loginActions';
 import { Button, TextField, Snackbar } from '@material-ui/core';
-
+import RegistrationPage from '../components/RegisterForm';
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
-    email: 'amendoza@gmail.com',
-    password: 'testpass'
+    email: '', // 'amendoza@gmail.com',
+    password: '', // 'testpass'
 }
 
-
-
-
-const LoginForm = (props) => {
+const LoginPage = (props) => {
     const { values, setValues, errors, setErrors, handleInputChange } = CommonFunctions(initialValues);
 
     const validate = () => {
         let temp = {}
-        temp.email = values.email != '' ? '' : 'This input a valid email.';
+        temp.email = values.email != '' ? '' : 'Please input a valid email.';
         setErrors({ ...temp });
 
         return Object.values(temp).every(x => x == '');
@@ -38,7 +35,10 @@ const LoginForm = (props) => {
 
     return (
         <div className={'loginPage'}>
-            <div className={'loginForm'}>
+            <div className={'centerAlign'}>
+                <RegistrationPage />
+            </div>
+            <div className={'centerAlign'}>
                 <div>
                     <h1>
                         Login
@@ -80,4 +80,4 @@ const mapActionToProps = {
     validateLogin: (email, password) => loginActions.validateLogin(email, password),
 }
 
-export default connect(mapStateToProps, mapActionToProps)(LoginForm);
+export default connect(mapStateToProps, mapActionToProps)(LoginPage);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as loginActions from '../actions/loginActions';
 import * as userTaskActions from '../actions/userTaskActions';
 import { Button, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, makeStyles, Checkbox } from '@material-ui/core';
-import EditableTable from '../common/editableTable';
+import EditableTable from '../components/editableTable';
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
