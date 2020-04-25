@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 
 const mapActionToProps = {
     fetchAllUsers: userActions.fetchAll,
-    fetchUserTasks: (id) => taskActions.fetchById(id)
+    fetchUserTasks: (id) => taskActions.fetchByUserId(id)
 }
 
 export default connect(mapStateToProps, mapActionToProps)(MainPage);

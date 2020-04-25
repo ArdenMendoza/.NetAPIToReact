@@ -17,7 +17,7 @@ export const validateLogin = (email, password) => dispatch => {
                     payload: res.data.obj
                 })
                 dispatch(
-                    userTaskActions.fetchById(res.data.obj.userId)
+                    userTaskActions.fetchByUserId(res.data.obj.userId)
                 )
                 dispatch(
                     showDialog('Login Successful')

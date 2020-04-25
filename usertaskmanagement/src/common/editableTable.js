@@ -11,38 +11,30 @@ export default function EditableTable(props) {
   // taskOwnerId: 1
   const [state, setState] = React.useState({
     columns: [
-      { title: 'taskId', field: 'taskId' },
-      { title: 'taskOwnerId', field: 'taskOwnerId' },
+      { title: 'taskId', field: 'taskId', type: 'numeric', editable: 'never', hidden: true },
+      { title: 'taskOwnerId', field: 'taskOwnerId', type: 'numeric', editable: 'never', hidden: true },
       { title: 'taskDescription', field: 'taskDescription' },
       { title: 'isDone', field: 'isDone', },
     ],
-    data: [],
+    userTasks: [...props.userTasks],
   });
 
   React.useEffect(() => {
-    setState({ ...state, data: [...props.userTasks] })
-  }, [props])
-
-  console.log('---Table---');
-  console.log(props.userTasks);
-  console.log('--state--');
-  console.log(state.data);
+    setState({ ...state, userTasks: [...props.userTasks] })
+  }, [props.userTasks])
 
   return (
     <MaterialTable
       title="Editable Example"
       columns={state.columns}
-      data={state.data}
+      data={state.userTasks}
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
-                const data = [...prevState.data];
-                data.push(newData);
-                return { ...prevState, data };
-              });
+              const taskOwnerId = props.userId;
+              props.addTask({ ...newData, taskOwnerId: taskOwnerId });
             }, 600);
           }),
         onRowUpdate: (newData, oldData) =>
@@ -51,24 +43,21 @@ export default function EditableTable(props) {
               resolve();
               if (oldData) {
                 props.updateRecord(oldData.taskId, newData);
-                // setState((prevState) => {
-                //   const data = [...prevState.data];
-                //   data[data.indexOf(oldData)] = newData;
-                //   return { ...prevState, data };
-                // });
               }
-
             }, 600);
           }),
         onRowDelete: (oldData) =>
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
-                const data = [...prevState.data];
-                data.splice(data.indexOf(oldData), 1);
-                return { ...prevState, data };
-              });
+              // setState((prevState) => {
+              //   const data = [...prevState.userTasks];
+              //   data.splice(data.indexOf(oldData), 1);
+              //   return { ...prevState, userTasks: data };
+              // });
+              const taskOwnerId = props.userId;
+              props.deleteTask(taskOwnerId, oldData.taskId);
+
             }, 600);
           }),
       }}

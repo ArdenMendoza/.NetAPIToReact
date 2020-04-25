@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -74,32 +75,31 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/UserTasks
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        [HttpPost]
-        public async Task<ActionResult<UserTask>> PostUserTask(UserTask userTask)
+        [AllowAnonymous]
+        [HttpPost("addUser")]
+        public IActionResult AddUser([FromBody]UserTask userTask)
         {
             _context.UserTasks.Add(userTask);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return CreatedAtAction("GetUserTask", new { id = userTask.taskId }, userTask);
+            CreatedAtAction("GetUserTask", new { id = userTask.taskId }, userTask);
+            return Ok(new Response<UserTask> { Success = true, Message = "UserTask " + userTask.taskDescription + " added. " });
         }
 
         // DELETE: api/UserTasks/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<UserTask>> DeleteUserTask(int id)
+        public IActionResult DeleteUserTask(int id)
         {
-            var userTask = await _context.UserTasks.FindAsync(id);
+            var userTask = _context.UserTasks.Find(id);
             if (userTask == null)
             {
                 return NotFound();
             }
 
             _context.UserTasks.Remove(userTask);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
 
-            return userTask;
+            return Ok(new Response<UserTask> { Success = true, Message = "UserTask " + userTask.taskDescription + " deleted. " }); ;
         }
 
         private bool UserTaskExists(int id)

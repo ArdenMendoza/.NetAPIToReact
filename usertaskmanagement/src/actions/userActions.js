@@ -1,6 +1,6 @@
 import React from 'react';
 import api from './api';
-import { fetchById } from './userTaskActions';
+import { fetchByUserId } from './userTaskActions';
 
 export const USER_ACTION_TYPES = {
     GET_USER:'GET_USER'
