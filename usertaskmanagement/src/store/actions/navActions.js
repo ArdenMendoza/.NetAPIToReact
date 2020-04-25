@@ -4,9 +4,9 @@ export const NAV_ACTION_TYPES = {
     NAV_TASKLIST_OPEN: 'NAV_TASKLIST_OPEN',
 }
 
-export const taskListOpen = () => dispatch => {
+export const navigate = (dest) => dispatch => {
     dispatch({
         type: NAV_ACTION_TYPES.NAV_TASKLIST_OPEN,
-        payload: { selectedView: 'taskListPage' }
+        payload: dest
     })
 }

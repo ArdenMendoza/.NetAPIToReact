@@ -44,28 +44,28 @@ const RegistrationPage = (props) => {
             <form autoComplete='off' noValidate onSubmit={handleSubmit}>
                 <TextField
                     name='regFirstName'
-                    variant='standard'
+                    variant='outlined'
                     label='First Name'
                     value={values.regFirstName}
                     onChange={handleInputChange}
                     {...(errors.regFirstName && { error: true, helperText: errors.regFirstName })} /> <br />
                 <TextField
                     name='regLastName'
-                    variant='standard'
+                    variant='outlined'
                     label='Last Name'
                     value={values.regLastName}
                     onChange={handleInputChange}
                     {...(errors.regLastName && { error: true, helperText: errors.regLastName })} /> <br />
                 <TextField
                     name='regEmail'
-                    variant='standard'
+                    variant='outlined'
                     label='Email'
                     value={values.regEmail}
                     onChange={handleInputChange}
                     {...(errors.regEmail && { error: true, helperText: errors.regEmail })} /> <br />
                 <TextField
                     name='regPassword'
-                    variant='standard'
+                    variant='outlined'
                     label='Password'
                     type='password'
                     value={values.regPassword}
@@ -74,7 +74,7 @@ const RegistrationPage = (props) => {
                 /> <br />
                 <TextField
                     name='regConfirmPassword'
-                    variant='standard'
+                    variant='outlined'
                     label='Confirm Password'
                     type='password'
                     value={values.regConfirmPassword}

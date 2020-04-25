@@ -44,7 +44,12 @@ const MainPage = (props) => {
                 <Toolbar>
                     <CheckListIcon />
                     <Typography variant="h6" className={classes.title}>Task List Manager</Typography>
-                    {props.user.userId && <Button onClick={() => props.openTaskPage()} color="inherit">Tasks List</Button>}
+                    {props.user.userId &&
+                        <div>
+                            <Button onClick={() => props.navigate('welcomePage')} color="inherit">Home</Button>
+                            <Button onClick={() => props.navigate('taskListPage')} color="inherit">Tasks List</Button>
+                        </div>
+                    }
                 </Toolbar>
             </AppBar>
             {selectedView(props.selectedView)}
@@ -59,7 +64,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionToProps = {
-    openTaskPage: () => navActions.taskListOpen()
+    navigate: dest => navActions.navigate(dest)
 }
 
 export default connect(mapStateToProps, mapActionToProps)(MainPage);

@@ -42,7 +42,7 @@ const LoginPage = (props) => {
                     <form autoComplete='off' noValidate onSubmit={handleSubmit}>
                         <TextField
                             name='email'
-                            variant='standard'
+                            variant='outlined'
                             label='Email'
                             value={values.email}
                             onChange={handleInputChange}
@@ -50,7 +50,7 @@ const LoginPage = (props) => {
                         /> <br />
                         <TextField
                             name='password'
-                            variant='standard'
+                            variant='outlined'
                             label='Password'
                             type='password'
                             autoComplete='current-password'

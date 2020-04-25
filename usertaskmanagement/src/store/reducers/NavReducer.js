@@ -13,7 +13,7 @@ export const navReducer = (state = initialState, action) => {
             }
         case NAV_ACTION_TYPES.NAV_TASKLIST_OPEN:
             return {
-                selectedView: 'taskListPage'
+                selectedView: action.payload
             }
         default:
             break;

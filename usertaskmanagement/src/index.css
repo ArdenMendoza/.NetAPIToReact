@@ -41,3 +41,6 @@ html, body, #root, .appRoot {
 /* tbody > tr.MuiTableRow-root > td.MuiTableCell-root:nth-child(2) {
   text-decoration: line-through;
 } */
+div.MuiFormControl-root{
+  padding-bottom: 17px;
+}
