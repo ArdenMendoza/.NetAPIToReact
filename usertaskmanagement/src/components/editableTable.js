@@ -1,8 +1,5 @@
 import React from 'react';
 import MaterialTable from 'material-table';
-import * as taskActions from '../actions/userTaskActions';
-
-
 
 export default function EditableTable(props) {
   const [state, setState] = React.useState({

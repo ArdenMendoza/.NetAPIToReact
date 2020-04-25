@@ -19,7 +19,7 @@ code {
 }
 
 .centerAlign {
-  border-left: black solid 1px;
+  border-left: #aaa solid 1px;
   text-align: center;
   max-width: 400px;
   width: 200px;

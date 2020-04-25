@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as userActions from '../store/actions/userActions';
-import * as taskActions from '../store/actions/userTaskActions';
+import * as navActions from '../store/actions/navActions';
 import LoginPage from './LoginPage';
 import WelcomePage from './WelcomePage';
+import UserTasksGrid from './UserTasksForm';
+
 import CheckListIcon from '@material-ui/icons/PlaylistAddCheckRounded';
 
 import { Typography, Button, IconButton, Toolbar, AppBar, makeStyles } from '@material-ui/core';
@@ -21,6 +22,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const selectedView = (selectedView) => {
+    switch (selectedView) {
+        case 'welcomePage':
+            return <WelcomePage />;
+        case 'taskListPage':
+            return <UserTasksGrid />;
+        default:
+            return <LoginPage />;
+    }
+}
+
 const MainPage = (props) => {
     const classes = useStyles();
     useEffect(() => {
@@ -30,31 +42,24 @@ const MainPage = (props) => {
         <div className={'appRoot'}>
             <AppBar position="static">
                 <Toolbar>
-                    {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton> */}
                     <CheckListIcon />
                     <Typography variant="h6" className={classes.title}>Task List Manager</Typography>
-                    {props.user.userId && <Button color="inherit">Task List</Button>}
-
+                    {props.user.userId && <Button onClick={() => props.openTaskPage()} color="inherit">Tasks List</Button>}
                 </Toolbar>
             </AppBar>
-            {(!props.user.userId) ? <LoginPage /> : <WelcomePage />}
-            {/* <CustomSnackbar isOpen={props.snackbar.isShown} message={props.snackbar.message} /> */}
+            {selectedView(props.selectedView)}
         </div>
     )
 }
 
 
 const mapStateToProps = state => ({
-    snackbar: state.loginReducer,
     user: state.userReducer.user,
-    userTasks: state.userTaskReducer.userTasks
+    selectedView: state.navReducer.selectedView
 })
 
 const mapActionToProps = {
-    fetchAllUsers: userActions.fetchAll,
-    fetchUserTasks: (id) => taskActions.fetchByUserId(id)
+    openTaskPage: () => navActions.taskListOpen()
 }
 
 export default connect(mapStateToProps, mapActionToProps)(MainPage);
