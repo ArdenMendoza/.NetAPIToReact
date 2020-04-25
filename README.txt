@@ -35,12 +35,7 @@ C. Run UI server (You should have Visual Studio code installed)
 
 Note: I wasn't able to do the MVC page due to time constraints but I should be able to do it, although I am not sure what the Exam Instruction means by "Create an MVC page that will demonstrate the use of reflection". I'm not sure if I should the the same UI via MVC or is it just a page? and somehow I should demonstrate how to use of reflection in a page. Either way, I'm so sorry if I failed you on that part. We can discuss it in the interview if you choose to proceed with my application. *Knock on wood*.
 
-I know a lot can still be improved in my codes, I haven't incorporated everything I know in there due to time constraints. (e.g. session, salt, etc)
+I'm aware a lot can still be incorporated in my codes, I haven't incorporated everything I know in there due to time constraints. (e.g. salt, session handling, etc)
 
 
-
-PS.
-I just realized. I created number 1 & 2 in react. Sorry about that. didn't notice the instruction details. 1 should be in asp.net mvc, 2 is in react(for the bonus). I created the all UI in react. Sorry about that. I hope I didn't hurt my chances. 
-
-PPS.
-Please hire me :|
+I'm looking forward to be working with you. :)
