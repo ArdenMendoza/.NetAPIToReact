@@ -20,11 +20,7 @@ export const fetchById = (id) => dispatch => {
 export const update = (taskId, updatedRecord) => dispatch => {
     api.tasks().update(taskId, updatedRecord)
         .then(res => {
-            debugger;
-            dispatch({
-                type: USER_TASK_ACTION_TYPES.UPDATE,
-                payload: res.data.objList
-            })
+            dispatch(fetchById(updatedRecord.taskOwnerId))
         })
         .catch(err => console.log(err))
 }

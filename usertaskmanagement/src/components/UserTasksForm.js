@@ -25,8 +25,11 @@ const UserTasksGrid = (props) => {
     const classes = useStyles();
     const { values, setValues, errors, setErrors, handleInputChange } = CommonFunctions(initialValues);
     return (
-        <div style={{width: '650px', margin: '0px auto'}}>
-            <EditableTable userTasks={props.userTasks}/>
+        <div style={{ width: '650px', margin: '0px auto' }}>
+            <EditableTable userTasks={props.userTasks}
+                updateRecord={props.updateRecord}
+                reloadTasks={props.reloadTasks}
+                />
         </div>
     )
 }
@@ -39,6 +42,7 @@ const mapStateToProps = state => ({
 
 const mapActionToProps = {
     updateRecord: (userTaskId, updatedRecord) => userTaskActions.update(userTaskId, updatedRecord),
+    reloadTasks: (id) => userTaskActions.fetchById(id)
 }
 
 export default connect(mapStateToProps, mapActionToProps)(UserTasksGrid);

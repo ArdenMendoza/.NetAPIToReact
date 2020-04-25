@@ -1,6 +1,6 @@
 import React from 'react';
 import MaterialTable from 'material-table';
-import * as userActions from '../actions/userTaskActions';
+import * as taskActions from '../actions/userTaskActions';
 
 
 
@@ -50,12 +50,14 @@ export default function EditableTable(props) {
             setTimeout(() => {
               resolve();
               if (oldData) {
-                setState((prevState) => {
-                  const data = [...prevState.data];
-                  data[data.indexOf(oldData)] = newData;
-                  return { ...prevState, data };
-                });
+                props.updateRecord(oldData.taskId, newData);
+                // setState((prevState) => {
+                //   const data = [...prevState.data];
+                //   data[data.indexOf(oldData)] = newData;
+                //   return { ...prevState, data };
+                // });
               }
+
             }, 600);
           }),
         onRowDelete: (oldData) =>
