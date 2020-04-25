@@ -12,7 +12,6 @@ export const navReducer = (state = initialState, action) => {
                 selectedView: 'welcomePage'
             }
         case NAV_ACTION_TYPES.NAV_TASKLIST_OPEN:
-            debugger;
             return {
                 selectedView: 'taskListPage'
             }

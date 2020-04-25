@@ -58,7 +58,7 @@ export default function EditableTable(props) {
             }, 600);
           }),
       }}
-      actions={[{position: 'toolbarOnSelect'}]}
+      actions={[{ position: 'toolbarOnSelect' }]}
     />
   );
 }

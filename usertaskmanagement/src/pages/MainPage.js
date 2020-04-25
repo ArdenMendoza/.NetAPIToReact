@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as navActions from '../store/actions/navActions';
 import LoginPage from './LoginPage';
 import WelcomePage from './WelcomePage';
-import UserTasksGrid from './UserTasksForm';
+import UserTasksGrid from './UserTasksPage';
 
 import CheckListIcon from '@material-ui/icons/PlaylistAddCheckRounded';
 

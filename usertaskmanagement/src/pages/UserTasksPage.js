@@ -5,13 +5,15 @@ import EditableTable from '../components/editableTable';
 
 const UserTasksGrid = (props) => {
     return (
-        <div style={{ width: '650px', margin: '0px auto' }}>
+        <div style={{ width: '650px', margin: '0px auto', display: 'table', height: 'calc(100% - 64px)' }}>
+            <div style={{display: 'table-cell', verticalAlign: 'middle'}}>
             <EditableTable userTasks={props.userTasks}
                 userId={props.userId}
                 updateRecord={props.updateRecord}
                 addTask={props.addTask}
                 deleteTask={props.deleteTask}
             />
+            </div>
         </div>
     )
 }
