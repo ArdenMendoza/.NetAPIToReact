@@ -81,13 +81,14 @@ namespace WebAPI.Controllers
         // POST: api/Users
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public IActionResult PostUser([FromBody]User user)
         {
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
-            return CreatedAtAction("GetUser", new { id = user.userId }, user);
+            return Ok(new Response<User> { Success = true, Message = "Registration successful", Obj = user });
         }
 
         [AllowAnonymous]

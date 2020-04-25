@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as loginActions from '../actions/loginActions';
+import * as loginActions from '../store/actions/loginActions';
 import { Button, TextField, Snackbar } from '@material-ui/core';
 import RegistrationPage from '../components/RegisterForm';
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
-    email: '', // 'amendoza@gmail.com',
-    password: '', // 'testpass'
+    email: 'amendoza@gmail.com',
+    password: 'testpass'
 }
 
 const LoginPage = (props) => {
@@ -28,10 +28,6 @@ const LoginPage = (props) => {
             props.validateLogin(values.email, values.password)
         }
     }
-
-    useEffect(() => {
-        props.validateLogin(values.email, values.password)
-    }, [props]) // temporary
 
     return (
         <div className={'loginPage'}>
@@ -73,6 +69,7 @@ const LoginPage = (props) => {
 
 
 const mapStateToProps = state => ({
+    
     isSnackbarOpen: false
 })
 

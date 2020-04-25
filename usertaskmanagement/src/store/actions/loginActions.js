@@ -5,7 +5,8 @@ import { USER_ACTION_TYPES } from '../actions/userActions';
 
 
 export const LOGIN_ACTION_TYPES = {
-    USER_LOG_IN: 'USER_LOGIN'
+    USER_LOG_IN: 'USER_LOGIN',
+    USER_REGISTER: 'USER_REGISTER' 
 }
 
 export const validateLogin = (email, password) => dispatch => {
@@ -39,4 +40,17 @@ export const hideDialog = (msg) => dispatch => {
         type: LOGIN_ACTION_TYPES.USER_LOG_IN,
         payload: { isShown: false, msg }
     })
+}
+
+export const register = (newRecord) => dispatch => {
+    api.users().register(newRecord)
+        .then(res => {
+            if (res.data.message == 'Registration Complete') {
+                // dispatch({
+                //     type: LOGIN_ACTION_TYPES.USER_REGISTER,
+                //     payload: res.data.obj
+                // })
+            }
+        })
+        .catch(err => console.log(err))
 }

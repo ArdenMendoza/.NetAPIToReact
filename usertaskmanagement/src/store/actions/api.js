@@ -4,6 +4,15 @@ import { unstable_StrictModeCollapse } from '@material-ui/core';
 const baseUrl = 'http://localhost:62470/api/';
 const baseUrl2 = 'http://localhost:5000/api/';
 
+const cleanupNewUserProps = (props) => {
+    const newProps = {};
+    newProps.FirstName = props.regFirstName;
+    newProps.LastName = props.regLastName;
+    newProps.Email = props.regEmail;
+    newProps.Password = props.regPassword;
+    return newProps;
+}
+
 export default {
     users(url = baseUrl2 + 'Users/') {
         return {
@@ -13,7 +22,10 @@ export default {
                 console.log(credentials);
                 return axios.post(url + 'authenticate', credentials)
             },
-            create: newRecord => axios.post(url, newRecord),
+            register: newRecord => {
+                const props = cleanupNewUserProps(newRecord);
+                return axios.post(url, props)
+            },
             update: (id, updatedRecord) => axios.put(url = id, updatedRecord),
             delete: id => axios.delete(url + id)
         }

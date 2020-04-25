@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import * as loginActions from '../actions/loginActions';
+import * as loginActions from '../store/actions/loginActions';
 import { Button, TextField, Snackbar } from '@material-ui/core';
 
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
-    email: '', // 'amendoza@gmail.com',
-    password: '', // 'testpass'
+    regFirstName: 'Arden Cristopher',
+    regLastName: 'Mendoza',
+    regEmail: 'ardencristophermendoza@gmail.com', // 'amendoza@gmail.com',
+    regPassword: 'testpass', // 'testpass'
+    regConfirmPassword: 'testpass'
 }
-
-
 
 
 const RegistrationPage = (props) => {
@@ -18,7 +19,10 @@ const RegistrationPage = (props) => {
 
     const validate = () => {
         let temp = {}
-        temp.email = values.email != '' ? '' : 'This input a valid email.';
+        temp.regFirstName = values.regFirstName != '' ? '' : 'Please input a First Name.';
+        temp.regLastName = values.regLastName != '' ? '' : 'Please input a Last Name.';
+        temp.regEmail = values.regEmail != '' ? '' : 'Please input a valid email.';
+        temp.regPassword = values.regPassword === '' ? 'Please inpute a password' : (values.regPassword === values.regConfirmPassword) ? '' : 'Passwords dont match';
         setErrors({ ...temp });
 
         return Object.values(temp).every(x => x == '');
@@ -28,13 +32,9 @@ const RegistrationPage = (props) => {
         // () => props.validateLogin(values.email, values.password)
         e.preventDefault();
         if (validate()) {
-            props.validateLogin(values.email, values.password)
+            props.userRegister(values)
         }
     }
-
-    useEffect(() => {
-        props.validateLogin(values.email, values.password)
-    }, [props]) // temporary
 
     return (
         <div>
@@ -48,28 +48,30 @@ const RegistrationPage = (props) => {
                     label='First Name'
                     value={values.regFirstName}
                     onChange={handleInputChange}
-                    {...(errors.firstName && { error: true, helperText: errors.firstName })} /> <br />
+                    {...(errors.regFirstName && { error: true, helperText: errors.regFirstName })} /> <br />
                 <TextField
                     name='regLastName'
                     variant='standard'
                     label='Last Name'
                     value={values.regLastName}
                     onChange={handleInputChange}
-                    {...(errors.lastName && { error: true, helperText: errors.lastName })} /> <br />
+                    {...(errors.regLastName && { error: true, helperText: errors.regLastName })} /> <br />
                 <TextField
                     name='regEmail'
                     variant='standard'
                     label='Email'
                     value={values.regEmail}
                     onChange={handleInputChange}
-                    {...(errors.email && { error: true, helperText: errors.email })} /> <br />
+                    {...(errors.regEmail && { error: true, helperText: errors.regEmail })} /> <br />
                 <TextField
                     name='regPassword'
                     variant='standard'
                     label='Password'
                     type='password'
                     value={values.regPassword}
-                    onChange={handleInputChange} /> <br />
+                    onChange={handleInputChange}
+                    {...(errors.regPassword && { error: true, helperText: errors.regPassword })}
+                /> <br />
                 <TextField
                     name='regConfirmPassword'
                     variant='standard'
@@ -93,6 +95,7 @@ const mapStateToProps = state => ({
 
 const mapActionToProps = {
     validateLogin: (email, password) => loginActions.validateLogin(email, password),
+    userRegister: newUser => loginActions.register(newUser)
 }
 
 export default connect(mapStateToProps, mapActionToProps)(RegistrationPage);

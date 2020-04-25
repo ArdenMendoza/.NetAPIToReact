@@ -1,10 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { store } from './actions/store';
+import { store } from './store/store';
 import { Provider } from 'react-redux';
 import MainPage from './pages/MainPage';
-import { Container } from '@material-ui/core';
 
 
 function App() {
