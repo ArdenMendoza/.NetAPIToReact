@@ -6,13 +6,14 @@ import { USER_ACTION_TYPES } from '../actions/userActions';
 
 export const LOGIN_ACTION_TYPES = {
     USER_LOG_IN: 'USER_LOGIN',
-    USER_REGISTER: 'USER_REGISTER' 
+    USER_REGISTER: 'USER_REGISTER'
 }
 
-export const validateLogin = (email, password) => dispatch => {
+export const validateLogin = (email, password, onSuccess) => dispatch => {
     api.users().login({ email, password })
         .then(res => {
             if (res.data.message == 'Login successful') {
+                onSuccess();
                 dispatch({
                     type: USER_ACTION_TYPES.GET_USER,
                     payload: res.data.obj
@@ -42,14 +43,11 @@ export const hideDialog = (msg) => dispatch => {
     })
 }
 
-export const register = (newRecord) => dispatch => {
-    api.users().register(newRecord)
+export const register = (newRecord, onSuccess) => dispatch => {
+    api.users().register(newRecord, onSuccess)
         .then(res => {
-            if (res.data.message == 'Registration Complete') {
-                // dispatch({
-                //     type: LOGIN_ACTION_TYPES.USER_REGISTER,
-                //     payload: res.data.obj
-                // })
+            if (res.data.message == 'Registration successful') {
+                onSuccess();
             }
         })
         .catch(err => console.log(err))

@@ -7,7 +7,7 @@ export default function EditableTable(props) {
       { title: 'Task Id', field: 'taskId', type: 'numeric', editable: 'never', hidden: true },
       { title: 'Owner Id', field: 'taskOwnerId', type: 'numeric', editable: 'never', hidden: true },
       { title: 'Description', field: 'taskDescription' },
-      { title: 'Is Done', field: 'isDone', lookup: { true: 'True', false: 'False' }, },
+      { title: 'Is Done', field: 'isDone', lookup: { true: 'Yes', false: 'No' } },
     ],
     userTasks: [],
   });

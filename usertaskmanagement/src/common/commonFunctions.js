@@ -12,12 +12,19 @@ export const CommonFunctions = (initialFieldValues) => {
             [name]: value
         });
     }
+    const resetForm = () => {
+        setValues({
+            ...initialFieldValues
+        })
+        setErrors({})
+    }
 
     return {
         values,
         setValues,
         errors,
         setErrors,
-        handleInputChange
+        handleInputChange, 
+        resetForm
     };
 }

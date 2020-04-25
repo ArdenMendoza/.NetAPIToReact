@@ -2,20 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as loginActions from '../store/actions/loginActions';
 import { Button, TextField, Snackbar } from '@material-ui/core';
+import { useToasts } from 'react-toast-notifications';
 
 
 import { CommonFunctions } from '../common/commonFunctions'
 const initialValues = {
     regFirstName: '',
     regLastName: '',
-    regEmail: '', 
-    regPassword: '', 
+    regEmail: '',
+    regPassword: '',
     regConfirmPassword: ''
 }
 
 
 const RegistrationPage = (props) => {
-    const { values, setValues, errors, setErrors, handleInputChange } = CommonFunctions(initialValues);
+    // toast msg.
+    const { addToast } = useToasts();
+
+    const { values, setValues, errors, setErrors, handleInputChange, resetForm } = CommonFunctions(initialValues);
 
     const validate = () => {
         let temp = {}
@@ -29,10 +33,13 @@ const RegistrationPage = (props) => {
     }
 
     const handleSubmit = e => {
-        // () => props.validateLogin(values.email, values.password)
+        const onSuccess = () => {
+            resetForm();
+            addToast('Registered successfully', { appearance: 'success' });
+        }
         e.preventDefault();
         if (validate()) {
-            props.userRegister(values)
+            props.userRegister(values, onSuccess)
         }
     }
 
@@ -95,7 +102,7 @@ const mapStateToProps = state => ({
 
 const mapActionToProps = {
     validateLogin: (email, password) => loginActions.validateLogin(email, password),
-    userRegister: newUser => loginActions.register(newUser)
+    userRegister: (newUser, onSuccess) => loginActions.register(newUser, onSuccess)
 }
 
 export default connect(mapStateToProps, mapActionToProps)(RegistrationPage);
