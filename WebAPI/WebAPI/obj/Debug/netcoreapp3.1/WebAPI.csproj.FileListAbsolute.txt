@@ -141,5 +141,6 @@ C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\bin\De
 C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\amendoza2\source\repos\ArdenMendoza\.NetAPIToReact\WebAPI\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.MvcApplicationPartsAssemblyInfo.cache

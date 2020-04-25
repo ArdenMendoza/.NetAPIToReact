@@ -28,10 +28,13 @@ namespace WebAPI
         {
             services.AddControllers();
 
-            services.AddDbContext<DonationDBContext>(options =>
+            // Dependency Injection
+            // For easier controller creation. 
+            services.AddDbContext<UserTaskManagementDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
