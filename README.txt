@@ -31,11 +31,3 @@ C. Run UI server (You should have Visual Studio code installed)
  5. In case there are missing references, in the terminal, execute "npm install" first to be sure that all dependencies are imported. This may take some time. Once you see "Happy hacking!", it means it's done. You may proceed to the next step. 
  6. In the terminal, execute "npm run start". 
  7. The UI with Login page should now be opened in your browser. 
-
-
-Note: I wasn't able to do the MVC page due to time constraints but I should be able to do it, although I am not sure what the Exam Instruction means by "Create an MVC page that will demonstrate the use of reflection". I'm not sure if I should the the same UI via MVC or is it just a page? and somehow I should demonstrate how to use of reflection in a page. Either way, I'm so sorry if I failed you on that part. We can discuss it in the interview if you choose to proceed with my application. *Knock on wood*.
-
-I'm aware a lot can still be incorporated in my codes, I haven't incorporated everything I know in there due to time constraints. (e.g. salt, session handling, etc)
-
-
-I'm looking forward to be working with you. :)
