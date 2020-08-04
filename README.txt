@@ -5,7 +5,7 @@ I. Via Migration
  1. Open ".NetAPIToReact/WebAPI/WebAPI.sln"
  2. Select WebAPI project in Solution Explorer Window
  3. from the menu bar, Select > Tools > NuGet Package Manager >  Package Manager Console
- 4. In the console, execute "Add Migration".
+ 4. In the console, execute "Add-Migration".
  5. It will ask for a migration name. This can be any string. You can  type something like "first migration" or something else.
  6. A Migration Class will be created under WebAPI > Migration  folder.
  7. After that, execute "Update-Database" in Package Manager Console.
